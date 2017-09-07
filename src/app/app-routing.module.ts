@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { ContactsComponent } from './components/contacts/contacts.component';
 import { ContactDetailsComponent } from './components/contacts/contact-details/contact-details.component';
+import { ContactResolver } from './shared/resolvers/contact.resolver';
 
 const appRoutes: Routes = [
   {
@@ -16,7 +17,10 @@ const appRoutes: Routes = [
     children: [
       {
         path: ':id',
-        component: ContactDetailsComponent
+        component: ContactDetailsComponent,
+        resolve: {
+          contact: ContactResolver
+        }
       }
     ]
   }
